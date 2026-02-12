@@ -9,49 +9,128 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
-        body { background-color: #020617; color: #f8fafc; font-family: 'Plus+Jakarta Sans', sans-serif; scroll-behavior: smooth; }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .gradient-text { background: linear-gradient(90deg, #60a5fa, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        /* ===================== DEFAULT (DARK MODE) ===================== */
+        body {
+            background-color: #020617;
+            color: #f8fafc;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #60a5fa, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
         .deloitte-green { color: #86bc25; }
         .deloitte-green-bg { background-color: #86bc25; }
-        
-        /* TIMER UI - FIXED CONTRAST */
-        #timerContainer { background: #ffffff; color: #020617; box-shadow: 0 10px 40px rgba(0,0,0,0.8); border: 3px solid #3b82f6; z-index: 1000; }
-        @keyframes flicker { 0%, 100% { background-color: #ffffff; } 50% { background-color: #fca5a5; } }
-        .timer-warning { animation: flicker 1s infinite; border: 3px solid #ef4444 !important; color: #b91c1c !important; }
-        .timer-stop { background-color: #991b1b !important; color: #ffffff !important; border: 3px solid #f87171 !important; animation: none; }
+
+        #timerContainer {
+            background: #ffffff;
+            color: #020617;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 3px solid #3b82f6;
+            z-index: 1000;
+        }
+
+        @keyframes flicker {
+            0%, 100% { background-color: #ffffff; }
+            50% { background-color: #fca5a5; }
+        }
+
+        .timer-warning {
+            animation: flicker 1s infinite;
+            border: 3px solid #ef4444 !important;
+            color: #b91c1c !important;
+        }
+
+        .timer-stop {
+            background-color: #991b1b !important;
+            color: #ffffff !important;
+            border: 3px solid #f87171 !important;
+            animation: none;
+        }
 
         .metric-card { transition: all 0.3s ease; }
-        .metric-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(134, 188, 37, 0.2); }
-        
-        .team-card { transition: all 0.3s ease; }
-        .team-card:hover { transform: translateY(-3px); border-color: #86bc25; }
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(134, 188, 37, 0.2);
+        }
+
+        /* ===================== LIGHT MODE ===================== */
+        body.light {
+            background-color: #f8fafc;
+            color: #020617;
+        }
+
+        body.light .glass {
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(15, 23, 42, 0.1);
+            backdrop-filter: blur(12px);
+        }
+
+        body.light .text-slate-400,
+        body.light .text-slate-500,
+        body.light .text-slate-600 {
+            color: #475569 !important;
+        }
+
+        body.light nav {
+            background: rgba(255, 255, 255, 0.85);
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        body.light footer {
+            background: #e5e7eb;
+            border-top: 1px solid #cbd5f5;
+        }
+
+        body.light .metric-card:hover {
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.25);
+        }
     </style>
 </head>
+
 <body onload="startTimer()">
 
-    <div id="timerContainer" class="fixed bottom-10 right-10 px-8 py-4 rounded-3xl flex items-center gap-4 transition-all">
-        <i class="fas fa-hourglass-start text-blue-600 text-2xl" id="timerIcon"></i>
-        <span id="displayTime" class="text-4xl font-black font-mono tracking-tighter">00:00</span>
+<!-- TIMER -->
+<div id="timerContainer" class="fixed bottom-10 right-10 px-8 py-4 rounded-3xl flex items-center gap-4 transition-all">
+    <i class="fas fa-hourglass-start text-blue-600 text-2xl" id="timerIcon"></i>
+    <span id="displayTime" class="text-4xl font-black font-mono tracking-tighter">00:00</span>
+</div>
+
+<!-- NAVBAR -->
+<nav class="fixed w-full z-50 glass border-b border-slate-800/50 px-8 py-4 flex justify-between items-center">
+    <div class="flex items-center gap-4">
+        <div class="bg-white p-1 rounded flex items-center justify-center shadow-md" style="height: 48px; width: 48px;">
+            <img src="mujlogo.jpg" alt="MUJ" class="h-full w-auto object-contain">
+        </div>
+        <div class="flex flex-col text-left">
+            <span class="text-xl font-black uppercase tracking-tighter">PBL <span class="text-blue-500 italic">2026</span></span>
+            <span class="text-[9px] font-bold uppercase tracking-widest mt-1">Department of Computer Science & Engineering</span>
+        </div>
     </div>
 
-    <nav class="fixed w-full z-50 glass border-b border-slate-800/50 px-8 py-4 flex justify-between items-center">
-        <div class="flex items-center gap-4">
-            <div class="bg-white p-1 rounded flex items-center justify-center shadow-md" style="height: 48px; width: 48px;">
-                <img src="mujlogo.jpg" alt="MUJ" class="h-full w-auto object-contain" onerror="this.src='https://via.placeholder.com/50?text=MUJ'">
-            </div>
-            <div class="flex flex-col text-left">
-                <span class="text-xl font-black text-white leading-none uppercase tracking-tighter">PBL <span class="text-blue-500 italic">2026</span></span>
-                <span class="text-[9px] text-slate-400 font-bold uppercase tracking-widest mt-1">Department of Computer Science & Engineering</span>
-            </div>
-        </div>
-        <div class="hidden md:flex gap-8 text-[11px] uppercase tracking-widest font-bold opacity-70">
-            <a href="#problem" class="hover:text-blue-400 transition">Problem</a>
-            <a href="#methodology" class="hover:text-blue-400 transition">Methodology</a>
-            <a href="#results" class="hover:text-blue-400 transition">Results</a>
-            <a href="#team" class="hover:text-blue-400 transition">Team</a>
-        </div>
-    </nav>
+    <div class="hidden md:flex gap-8 text-[11px] uppercase tracking-widest font-bold opacity-70">
+        <a href="#problem" class="hover:text-blue-400 transition">Problem</a>
+        <a href="#methodology" class="hover:text-blue-400 transition">Methodology</a>
+        <a href="#results" class="hover:text-blue-400 transition">Results</a>
+        <a href="#team" class="hover:text-blue-400 transition">Team</a>
+    </div>
+
+    <!-- THEME TOGGLE -->
+    <button onclick="toggleTheme()" class="ml-6 px-4 py-2 rounded-full glass text-xs font-black uppercase tracking-widest hover:opacity-80 transition">
+        <i class="fas fa-sun mr-2"></i>Light
+    </button>
+</nav>
 
     <main class="max-w-6xl mx-auto px-6 pt-48 pb-32 space-y-32">
         
@@ -59,12 +138,15 @@
         <section class="text-center">
             <!-- BIG HERO IMAGE -->
             <div class="flex justify-center mb-10">
-                <img 
-                    src="deloitte.png" class="w-32" 
-                    alt="Deloitte USI"
-                    class="w-full max-w-l rounded-3xl shadow-2xl"
-                />
+                <div class="bg-black p-6 rounded-3xl shadow-2xl flex items-center justify-center">
+                    <img 
+                        src="deloitte.png"
+                        alt="Deloitte USI"
+                        class="w-32 object-contain"
+                    />
+                </div>
             </div>
+
             <h1 class="text-5xl md:text-6xl font-extrabold mb-8 uppercase leading-tight"><span class="gradient-text">Known Error Database</span></h1>
             <p class="text-slate-400 max-w-3xl mx-auto italic text-lg leading-relaxed border-l-2 border-blue-500/30 pl-6 text-left mb-12">
                 "Transforming IT Service Management through intelligent knowledge reuse, reducing incident resolution time by up to 42% and cutting operational costs by $40K-$180K annually for enterprises managing 15K+ incidents per year."
@@ -350,6 +432,12 @@
     </footer>
 
     <script>
+
+        function toggleTheme() {
+        document.body.classList.toggle('light');
+    }
+
+
         // TIMER LOGIC
         let sec = 0;
         let timer = null;
