@@ -142,7 +142,7 @@
                     <img 
                         src="deloitte.png"
                         alt="Deloitte USI"
-                        class="w-32 object-contain"
+                        class="w-64 object-contain"
                     />
                 </div>
             </div>
@@ -183,37 +183,95 @@
             <!-- Team Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 text-left">
                 
-                <div class="glass p-7 rounded-3xl transition hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-900/20">
+                <!-- Krish -->
+                <div class="glass p-5 rounded-3xl transition hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-900/20">
                     <span class="text-[10px] font-bold uppercase tracking-widest text-blue-400">23FE10CSE00823</span>
                     <p class="font-black text-lg mt-1">Krish Kumar Gupta</p>
-                    <p class="text-xs text-slate-500 mt-2 leading-relaxed">
-                        Solution architecture, PostgreSQL schema design, CORS configuration, Meilisearch integration
+                    <p class="text-xs text-slate-500 mt-2 mb-4">
+                        Solution architecture, PostgreSQL schema design, CORS configuration, Meilisearch
                     </p>
+
+                    <!-- Certificate Preview -->
+                    <div onclick="openCert('krish_cert.pdf')" 
+                        class="rounded-xl overflow-hidden border border-slate-700 cursor-pointer group relative">
+                        
+                        <iframe src="krish_cert.pdf" class="w-full h-40 pointer-events-none"></iframe>
+                        
+                        <!-- Overlay -->
+                        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                            <span class="text-xs font-bold uppercase tracking-widest text-white">
+                                View Certificate
+                            </span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="glass p-7 rounded-3xl transition hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-900/20">
+                <!-- Shravani -->
+                <div class="glass p-5 rounded-3xl transition hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-900/20">
                     <span class="text-[10px] font-bold uppercase tracking-widest text-purple-400">23FE10CSE00088</span>
                     <p class="font-black text-lg mt-1">Shravani Sanjay Wagh</p>
-                    <p class="text-xs text-slate-500 mt-2 leading-relaxed">
+                    <p class="text-xs text-slate-500 mt-2 mb-4">
                         UI/UX design, AI layer implementation, data modeling, pitch deck creation
                     </p>
+
+                    <div onclick="openCert('shravani_cert.pdf')" 
+                        class="rounded-xl overflow-hidden border border-slate-700 cursor-pointer group relative">
+                        
+                        <iframe src="shravani_cert.pdf" class="w-full h-40 pointer-events-none"></iframe>
+                        
+                        <!-- Overlay -->
+                        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                            <span class="text-xs font-bold uppercase tracking-widest text-white">
+                                View Certificate
+                            </span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="glass p-7 rounded-3xl transition hover:-translate-y-1 hover:shadow-xl hover:shadow-green-900/20">
+                <!-- Kanak -->
+                <div class="glass p-5 rounded-3xl transition hover:-translate-y-1 hover:shadow-xl hover:shadow-green-900/20">
                     <span class="text-[10px] font-bold uppercase tracking-widest text-green-400">23FE10CSE00232</span>
                     <p class="font-black text-lg mt-1">Kanak Raj Arora</p>
-                    <p class="text-xs text-slate-500 mt-2 leading-relaxed">
+                    <p class="text-xs text-slate-500 mt-2 mb-4">
                         UI/UX implementation, AI layer design, Meilisearch setup, dataset design
                     </p>
+
+                    <div onclick="openCert('kanak_cert.pdf')" 
+                        class="rounded-xl overflow-hidden border border-slate-700 cursor-pointer group relative">
+                        
+                        <iframe src="kanak_cert.pdf" class="w-full h-40 pointer-events-none"></iframe>
+                        
+                        <!-- Overlay -->
+                        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                            <span class="text-xs font-bold uppercase tracking-widest text-white">
+                                View Certificate
+                            </span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="glass p-7 rounded-3xl transition hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-900/20">
+                <!-- Akshat -->
+                <div class="glass p-5 rounded-3xl transition hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-900/20">
                     <span class="text-[10px] font-bold uppercase tracking-widest text-blue-300">23FE10CSE00581</span>
                     <p class="font-black text-lg mt-1">Akshat Ahuja</p>
-                    <p class="text-xs text-slate-500 mt-2 leading-relaxed">
+                    <p class="text-xs text-slate-500 mt-2 mb-4">
                         Architecture and diagram support, API documentation, CORS configuration, pitch deck creation
                     </p>
+
+                    <div onclick="openCert('akshat_cert.pdf')" 
+                        class="rounded-xl overflow-hidden border border-slate-700 cursor-pointer group relative">
+                        
+                        <iframe src="akshat_cert.pdf" class="w-full h-40 pointer-events-none"></iframe>
+                        
+                        <!-- Overlay -->
+                        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                            <span class="text-xs font-bold uppercase tracking-widest text-white">
+                                View Certificate
+                            </span>
+                        </div>
+                    </div>
                 </div>
+
             </div>
 
             <!-- Mentors -->
@@ -439,6 +497,18 @@
 
     <script>
 
+        function openCert(file) {
+        document.getElementById('certFrame').src = file;
+        document.getElementById('certModal').classList.remove('hidden');
+        document.getElementById('certModal').classList.add('flex');
+    }
+
+    function closeCert() {
+        document.getElementById('certModal').classList.add('hidden');
+        document.getElementById('certModal').classList.remove('flex');
+        document.getElementById('certFrame').src = "";
+    }
+
         function toggleTheme() {
         document.body.classList.toggle('light');
     }
@@ -526,5 +596,20 @@
             }
         });
     </script>
+    <!-- Certificate Modal -->
+    <div id="certModal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
+        
+        <div class="relative w-[90%] max-w-4xl h-[80%] glass rounded-3xl overflow-hidden">
+            
+            <!-- Close Button -->
+            <button onclick="closeCert()" 
+                    class="absolute top-4 right-4 z-10 bg-white text-black px-3 py-1 rounded-full text-xs font-bold">
+                ✕
+            </button>
+
+            <!-- PDF Viewer -->
+            <iframe id="certFrame" class="w-full h-full"></iframe>
+        </div>
+    </div>
 </body>
 </html>
